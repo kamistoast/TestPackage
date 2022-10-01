@@ -11,5 +11,7 @@ public struct TestPackage: View {
     
     public var body: some View {
         Text("\(count)")
+            .bold()
+            .foregroundColor(.red)
     }
 }
