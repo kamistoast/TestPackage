@@ -1,6 +1,15 @@
-public struct TestPackage {
-    public private(set) var text = "Hello, World!"
+import SwiftUI
 
-    public init() {
+public struct TestPackage: View {
+    
+    var count: Int
+
+    public init(count: Int) {
+        
+        self.count = count
+    }
+    
+    public var body: some View {
+        Text("\(count)")
     }
 }
