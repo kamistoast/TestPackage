@@ -35,9 +35,7 @@ extension TestPackage {
 extension TestPackage {
     public var body: some View {
         ScrollView {
-            Text("\(count)")
-                .bold()
-                .foregroundColor(.red)
+            content
         }
     }
 }
