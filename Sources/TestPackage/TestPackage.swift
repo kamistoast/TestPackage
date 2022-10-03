@@ -5,6 +5,8 @@ public struct TestPackage<Content>: View where Content : View {
     var id: AnyHashable
     var content: Content
     
+    @State var isVisible: Bool = false
+    
 }
 
 extension TestPackage {
@@ -27,7 +29,7 @@ extension TestPackage {
                 Button {
                     withAnimation {
                         proxy.scrollTo(id, anchor: .center)
-                        print(proxy)
+                        isVisible = true
                     }
                 } label: {
                     ZStack {
@@ -42,7 +44,7 @@ extension TestPackage {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.trailing)
-
+                .opacity(isVisible ? 1 : 0)
             }
         }
     }
