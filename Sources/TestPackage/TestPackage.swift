@@ -44,9 +44,10 @@ extension TestPackage {
                 .padding(.trailing)
                 .opacity(isVisible)
             }
-            .onChange(of: id) { newValue in
-                isVisible = 1
-                print("visible")
+            .onChange(of: id) { _ in
+                withAnimation {
+                    isVisible = 1
+                }
             }
         }
     }
