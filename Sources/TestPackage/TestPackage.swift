@@ -5,7 +5,7 @@ public struct TestPackage<Content>: View where Content : View {
     var id: AnyHashable
     var content: Content
     
-    @State var isVisible: Bool = false
+    @State var isVisible: Bool = true
     
 }
 
