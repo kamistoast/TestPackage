@@ -19,12 +19,6 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct TestPackage<Content> where Content : View {
     
-    public var content: Content
+    public init(@ViewBuilder content: () -> Content) {}
     
-    public init(content: Content) {
-        self.content = content
-    }
-    public var body: some View {
-        Text("hi")
-    }
 }
