@@ -27,6 +27,7 @@ extension TestPackage {
                 Button {
                     withAnimation {
                         proxy.scrollTo(id, anchor: .center)
+                        print(proxy)
                     }
                 } label: {
                     ZStack {
