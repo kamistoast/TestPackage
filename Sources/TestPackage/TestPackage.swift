@@ -1,29 +1,14 @@
 import SwiftUI
 
-/*public struct TestPackage: View {
-    
-    var count: Int
-
-    public init(count: Int) {
-        
-        self.count = count
-    }
-    
-    public var body: some View {
-        Text("\(count)")
-            .bold()
-            .foregroundColor(.red)
-    }
-}*/
 public struct TestPackage<Content>: View where Content : View {
     
-    var id: Int
+    var id: UUID
     var content: Content
     
 }
 
 extension TestPackage {
-    public init(id: Int, @ViewBuilder content: () -> Content) {
+    public init(id: UUID = UUID(), @ViewBuilder content: () -> Content) {
         
         self.id = id
         self.content = content()
