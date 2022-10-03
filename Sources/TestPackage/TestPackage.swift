@@ -25,12 +25,23 @@ extension TestPackage {
             }
             .overlay {
                 Button {
-                    proxy.scrollTo(id, anchor: .center)
+                    withAnimation {
+                        proxy.scrollTo(id, anchor: .center)
+                    }
                 } label: {
-                    Text("Scroll to")
+                    ZStack {
+                        Circle()
+                            .foregroundColor(.black)
+                            .frame(width: 40, height: 40)
+                        
+                        Image(systemName: "chevron.down")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                    }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.trailing)
+
             }
         }
     }
