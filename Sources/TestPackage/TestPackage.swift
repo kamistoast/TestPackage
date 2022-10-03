@@ -15,7 +15,7 @@ import SwiftUI
             .foregroundColor(.red)
     }
 }*/
-public struct TestPackage<Content> where Content : View {
+public struct TestPackage<Content>: View where Content : View {
     
     var count: Int
     var content: Content
