@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct TestPackage<Content>: View where Content : View {
     
-    var id: UUID
+    public var id = UUID()
     var content: Content
     
 }
@@ -34,4 +34,11 @@ extension TestPackage {
             }
         }
     }
+}
+public struct Trd: Identifiable {
+    public var id = UUID()
+}
+
+extension TestPackage: Identifiable {
+
 }
