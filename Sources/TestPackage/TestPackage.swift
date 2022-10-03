@@ -17,23 +17,27 @@ import SwiftUI
 }*/
 public struct TestPackage<Content> where Content : View {
     
-    public var content: Content
+    var count: Int
+    var content: Content
     
 }
 
-public extension TestPackage {
+extension TestPackage {
     
-    init(@ViewBuilder _ content: () -> Content) {
+    public init(count: Int, @ViewBuilder _ content: () -> Content) {
         
+        self.count = count
         self.content = content()
     }
 
 }
 
-public extension TestPackage {
-    var body: some View {
-        return ScrollView {
-            Text("hi")
+extension TestPackage {
+    public var body: some View {
+        ScrollView {
+            Text("\(count)")
+                .bold()
+                .foregroundColor(.red)
         }
     }
 }
