@@ -3,10 +3,8 @@ import SwiftUI
 public struct TestPackage<Content>: View where Content : View {
     
     var id: AnyHashable
+    @State var isVisible: Double = 1
     var content: Content
-    
-    @State var isVisible: Bool = true
-    
 }
 
 extension TestPackage {
@@ -29,7 +27,7 @@ extension TestPackage {
                 Button {
                     withAnimation {
                         proxy.scrollTo(id, anchor: .center)
-                        isVisible = true
+                        isVisible = 0
                     }
                 } label: {
                     ZStack {
@@ -44,7 +42,11 @@ extension TestPackage {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.trailing)
-                .opacity(isVisible ? 1 : 0)
+                .opacity(isVisible)
+            }
+            .onChange(of: id) { newValue in
+                isVisible = 1
+                print("visible")
             }
         }
     }
