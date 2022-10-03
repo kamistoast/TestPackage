@@ -24,7 +24,7 @@ public struct TestPackage<Content> where Content : View {
 
 extension TestPackage {
     
-    public init(count: Int, @ViewBuilder _ content: () -> Content) {
+    public init(count: Int, @ViewBuilder content: () -> Content) {
         
         self.count = count
         self.content = content()
@@ -34,10 +34,6 @@ extension TestPackage {
 
 extension TestPackage {
     public var body: some View {
-        ScrollView {
-            Text("\(count)")
-                .bold()
-                .foregroundColor(.red)
-        }
+        content
     }
 }
