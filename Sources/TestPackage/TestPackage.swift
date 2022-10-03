@@ -15,10 +15,17 @@ import SwiftUI
             .foregroundColor(.red)
     }
 }*/
-
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct TestPackage<Content> where Content : View {
     
-    public init(@ViewBuilder content: () -> Content) {}
+    public var content: Content
     
+}
+
+public extension TestPackage {
+    
+    init(@ViewBuilder _ content: () -> Content) {
+        
+        self.content = content()
+    }
+
 }
