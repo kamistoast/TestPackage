@@ -2,13 +2,13 @@ import SwiftUI
 
 public struct TestPackage<Content>: View where Content : View {
     
-    public var id = UUID()
+    var id: AnyHashable
     var content: Content
     
 }
 
 extension TestPackage {
-    public init(id: UUID = UUID(), @ViewBuilder content: () -> Content) {
+    public init(id: AnyHashable, @ViewBuilder content: () -> Content) {
         
         self.id = id
         self.content = content()
@@ -34,11 +34,4 @@ extension TestPackage {
             }
         }
     }
-}
-public struct Trd: Identifiable {
-    public var id = UUID()
-}
-
-extension TestPackage: Identifiable {
-
 }
