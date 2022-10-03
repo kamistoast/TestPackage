@@ -17,16 +17,15 @@ import SwiftUI
 }*/
 public struct TestPackage<Content>: View where Content : View {
     
-    var count: Int
+    var id: Int
     var content: Content
     
 }
 
 extension TestPackage {
-    
-    public init(count: Int, @ViewBuilder content: () -> Content) {
+    public init(id: Int, @ViewBuilder content: () -> Content) {
         
-        self.count = count
+        self.id = id
         self.content = content()
     }
 
@@ -34,8 +33,20 @@ extension TestPackage {
 
 extension TestPackage {
     public var body: some View {
-        ScrollView {
-            content
+        
+        ScrollViewReader { proxy in
+            ScrollView {
+                content
+            }
+            .overlay {
+                Button {
+                    proxy.scrollTo(id, anchor: .center)
+                } label: {
+                    Text("Scroll to")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                .padding(.trailing)
+            }
         }
     }
 }
