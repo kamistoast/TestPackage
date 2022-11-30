@@ -31,12 +31,11 @@ extension TestPackage {
                         currentPosition = $0.y
                         isVisible = 0.00000001
                         print("\(currentPosition) und \($0.y)")
-                    }
-                    
-                    if isVisible == 0.00000001 && currentPosition != $0.y {
+                    } else if isVisible == 0.00000001 && currentPosition != $0.y {
                         print(currentPosition)
                         isVisible = 1
                     }
+                    
                    
                 }) {
                 content
