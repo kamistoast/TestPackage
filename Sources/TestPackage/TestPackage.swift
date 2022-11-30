@@ -30,10 +30,11 @@ extension TestPackage {
                         //gets the y postion (vertical)
                         currentPosition = $0.y
                         isVisible = 0.00000001
-                        print("\(currentPosition) unsichtbar")
+                        print("\(currentPosition) und \($0.y)")
                     }
                     
                     if isVisible == 0.00000001 && currentPosition != $0.y {
+                        print(currentPosition)
                         isVisible = 1
                     }
                    
