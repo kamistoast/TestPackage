@@ -4,9 +4,9 @@ public struct TestPackage<Content>: View where Content : View {
     
     var id: AnyHashable
     var content: Content
-    @State var isVisible: Double = 1
-    @State var toggle: Bool = false
+    @State var isVisible: Bool = true
     @State var currentPosition: Double = 0.0
+    @State var savedPosition: Double = 0.0
 }
 
 extension TestPackage {
@@ -26,12 +26,13 @@ extension TestPackage {
                 axes: .vertical,
                 showsIndicators: false,
                 offsetChanged: {
-                    
-                    if toggle == true {
+                 
+                    while isVisible {
                         currentPosition = $0.y
-                        toggle = false
-                    } else if toggle == false && isVisible == 0 && currentPosition != $0.y {
-                        print ("hi")
+                    }
+                    
+                    if isVisible == false && currentPosition != $0.y {
+                        print(currentPosition)
                     }
                 
                 }) {
@@ -41,8 +42,7 @@ extension TestPackage {
                 Button {
                     withAnimation {
                         proxy.scrollTo(id, anchor: .center)
-                        isVisible = 0
-                        toggle = true
+                        isVisible.toggle()
                         
                     }
                 } label: {
@@ -58,7 +58,7 @@ extension TestPackage {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.trailing)
-                .opacity(isVisible)
+                .opacity(isVisible ? 1 : 0)
             }
         }
     }
