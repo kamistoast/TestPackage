@@ -28,9 +28,9 @@ extension TestPackage {
                 offsetChanged: {
 
                     if isVisible {
-                        savedPosition = $0.y
-                    } else {
                         currentPosition = $0.y
+                    } else {
+                        savedPosition = $0.y
                     }
                                 
                 }) {
@@ -38,7 +38,7 @@ extension TestPackage {
             }
             .overlay {
                 Button {
-                    
+                    //with animation
                         proxy.scrollTo(id, anchor: .center)
                         isVisible.toggle()
                         
@@ -57,9 +57,9 @@ extension TestPackage {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.trailing)
                 .opacity(isVisible ? 1 : 0)
-                .onChange(of: currentPosition) { _ in
+                .onChange(of: savedPosition) { _ in
                     if currentPosition != savedPosition {
-                        print("hi")
+                        print("\(currentPosition) and \(savedPosition)")
                     }
                 }
             }
