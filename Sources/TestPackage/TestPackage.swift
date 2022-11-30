@@ -6,7 +6,6 @@ public struct TestPackage<Content>: View where Content : View {
     var content: Content
     @State var isVisible: Double = 1
     @State var currentPosition: Double = 0.0
-    @State var toggle: Bool = false
 }
 
 extension TestPackage {
@@ -27,15 +26,13 @@ extension TestPackage {
                 showsIndicators: false,
                 offsetChanged: {
                     
-                    if toggle {
+                    if isVisible == 0 && currentPosition != $0.y{
                         //gets the y postion (vertical)
                         currentPosition = $0.y
-                        toggle.toggle()
                         print("\(currentPosition) unsichtbar")
-                    } else if isVisible == 0 &&  currentPosition != $0.y {
-                        isVisible = 1
-                        print("changed")
                     }
+                    
+                   
                 }) {
                 content
             }
@@ -44,7 +41,7 @@ extension TestPackage {
                     withAnimation {
                         proxy.scrollTo(id, anchor: .center)
                         isVisible = 0
-                        toggle = true
+                        
                     }
                 } label: {
                     ZStack {
