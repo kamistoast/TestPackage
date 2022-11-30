@@ -26,11 +26,16 @@ extension TestPackage {
                 axes: .vertical,
                 showsIndicators: false,
                 offsetChanged: {
-                    //gets the y postion (vertical)
-                    currentPosition = $0.y
                     
                     if isVisible == 0 {
+                        //gets the y postion (vertical)
+                        currentPosition = $0.y
                         print("\(currentPosition) unsichtbar")
+                    }
+                    
+                    if isVisible == 0 && currentPosition != $0.y {
+                        isVisible = 1
+                        print("changed")
                     }
                     
                     print("\(currentPosition) und \(savedPosition)")
