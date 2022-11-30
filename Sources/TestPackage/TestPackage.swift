@@ -27,13 +27,17 @@ extension TestPackage {
                 showsIndicators: false,
                 offsetChanged: {
 
-                    if toggle == true {
+                    //saves the items position where you scrolled to
+                    if toggle {
                         savedPosition = $0.y
                         toggle.toggle()
                     }
                     
-                    if isVisible == false && toggle == false && savedPosition != $0.y{
-                        isVisible.toggle()
+                    // makes button visible again
+                    if isVisible == false && toggle == false && savedPosition != $0.y {
+                        withAnimation {
+                            isVisible.toggle()
+                        }
                     }
                                 
                 }) {
@@ -41,8 +45,9 @@ extension TestPackage {
             }
             .overlay {
                 Button {
-                    //with animation
+                    withAnimation {
                         proxy.scrollTo(id, anchor: .center)
+                    }
                         isVisible.toggle()
                         toggle.toggle()
                         
