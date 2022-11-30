@@ -6,6 +6,7 @@ public struct TestPackage<Content>: View where Content : View {
     var content: Content
     @State var isVisible: Double = 1
     @State var currentPosition: Double = 0.0
+    @State var savedPosition: Double = 0.0
 }
 
 extension TestPackage {
@@ -26,9 +27,9 @@ extension TestPackage {
                 showsIndicators: false,
                 offsetChanged: {
                     //gets the y postion (vertical)
-                        currentPosition = $0.y
-                    if isVisible == 0 {
-                        print(currentPosition)
+                    currentPosition = $0.y
+                    if savedPosition != currentPosition {
+                        isVisible = 1
                     }
                 }) {
                 content
@@ -38,6 +39,7 @@ extension TestPackage {
                     withAnimation {
                         proxy.scrollTo(id, anchor: .center)
                         isVisible = 0
+                        savedPosition = currentPosition
                         
                     }
                 } label: {
