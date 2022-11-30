@@ -33,6 +33,9 @@ extension TestPackage {
                         print("\(currentPosition) unsichtbar")
                     }
                     
+                    if isVisible == 0.00000001 && currentPosition != $0.y {
+                        isVisible = 1
+                    }
                    
                 }) {
                 content
