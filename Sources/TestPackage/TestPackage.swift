@@ -3,8 +3,9 @@ import SwiftUI
 public struct TestPackage<Content>: View where Content : View {
     
     var id: AnyHashable
-    @State var isVisible: Double = 1
     var content: Content
+    @State var isVisible: Double = 1
+    @State var position: Double = 0.0
 }
 
 extension TestPackage {
@@ -23,8 +24,17 @@ extension TestPackage {
             ScrollView(
                 axes: .vertical,
                 showsIndicators: false,
-                offsetChanged: { print($0) }
-            ) {
+                offsetChanged: {
+                    //gets the y postion (vertical)
+                    if isVisible == 1 {
+                        position = $0.y
+                    }
+                    
+                    if position != $0.y {
+                        isVisible = 1
+                    }
+                
+                }) {
                 content
             }
             .overlay {

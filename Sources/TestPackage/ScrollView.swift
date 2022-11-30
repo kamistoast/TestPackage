@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Creates a custom scrollview which can read its position
 private struct ScrollOffsetPreferenceKey: PreferenceKey {
     static var defaultValue: CGPoint = .zero
     
