@@ -28,9 +28,7 @@ extension TestPackage {
                 offsetChanged: {
                     //gets the y postion (vertical)
                     currentPosition = $0.y
-                    if savedPosition != currentPosition {
-                        isVisible = 1
-                    }
+                    print(currentPosition)
                 }) {
                 content
             }
