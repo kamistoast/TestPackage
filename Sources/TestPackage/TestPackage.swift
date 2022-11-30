@@ -33,7 +33,7 @@ extension TestPackage {
                     }
                     
                     if isVisible == false && toggle == false && savedPosition != $0.y{
-                        print("hi")
+                        isVisible.toggle()
                     }
                                 
                 }) {
