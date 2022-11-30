@@ -5,7 +5,7 @@ public struct TestPackage<Content>: View where Content : View {
     var id: AnyHashable
     var content: Content
     @State var isVisible: Double = 1
-    @State var position: Double = 0.0
+    @State var currentPosition: Double = 0.0
 }
 
 extension TestPackage {
@@ -26,14 +26,10 @@ extension TestPackage {
                 showsIndicators: false,
                 offsetChanged: {
                     //gets the y postion (vertical)
-                    
-                    if isVisible == 0 && position != $0.y {
-                        isVisible = 1
-                    } else if isVisible == 1 {
-                        position = $0.y
-
+                        currentPosition = $0.y
+                    if isVisible == 0 {
+                        print(currentPosition)
                     }
-
                 }) {
                 content
             }
