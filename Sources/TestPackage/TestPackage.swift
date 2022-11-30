@@ -38,11 +38,11 @@ extension TestPackage {
             }
             .overlay {
                 Button {
-                    withAnimation {
+                    
                         proxy.scrollTo(id, anchor: .center)
                         isVisible.toggle()
                         
-                    }
+                    
                 } label: {
                     ZStack {
                         Circle()
