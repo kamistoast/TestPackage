@@ -26,9 +26,10 @@ extension TestPackage {
                 showsIndicators: false,
                 offsetChanged: {
                     
-                    if isVisible == 0 && currentPosition != $0.y{
+                    if isVisible == 0{
                         //gets the y postion (vertical)
                         currentPosition = $0.y
+                        isVisible = 0.00000001
                         print("\(currentPosition) unsichtbar")
                     }
                     
