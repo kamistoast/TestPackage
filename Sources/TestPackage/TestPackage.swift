@@ -26,15 +26,13 @@ extension TestPackage {
                 axes: .vertical,
                 showsIndicators: false,
                 offsetChanged: {
-                 
-                    while isVisible {
+
+                    if isVisible {
+                        savedPosition = $0.y
+                    } else {
                         currentPosition = $0.y
                     }
-                    
-                    if isVisible == false && currentPosition != $0.y {
-                        print(currentPosition)
-                    }
-                
+                                
                 }) {
                 content
             }
@@ -59,6 +57,11 @@ extension TestPackage {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.trailing)
                 .opacity(isVisible ? 1 : 0)
+                .onChange(of: currentPosition) { _ in
+                    if currentPosition != savedPosition {
+                        print("hi")
+                    }
+                }
             }
         }
     }
