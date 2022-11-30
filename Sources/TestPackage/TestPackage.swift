@@ -28,7 +28,7 @@ extension TestPackage {
                 offsetChanged: {
 
                     currentPosition = $0.y
-                    
+                    print(currentPosition)
                     
                     
                                 
