@@ -24,7 +24,7 @@ extension TestPackage {
                 content
             }
             .onChange(of: id) { newValue in
-                print("hi")
+                print("hil")
             }
             .overlay {
                 Button {
