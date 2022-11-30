@@ -5,6 +5,7 @@ public struct TestPackage<Content>: View where Content : View {
     var id: AnyHashable
     var content: Content
     @State var isVisible: Double = 1
+    @State var toggle: Bool = false
     @State var currentPosition: Double = 0.0
 }
 
@@ -26,17 +27,13 @@ extension TestPackage {
                 showsIndicators: false,
                 offsetChanged: {
                     
-                    if isVisible == 0{
-                        //gets the y postion (vertical)
+                    if toggle == true {
                         currentPosition = $0.y
-                        isVisible = 0.00000001
-                        print("\(currentPosition) und \($0.y)")
-                    } else if isVisible == 0.00000001 && currentPosition != $0.y {
-                        print(currentPosition)
-                        isVisible = 1
+                        toggle = false
+                    } else if toggle == false && isVisible == 0 && currentPosition != $0.y {
+                        print ("hi")
                     }
-                    
-                   
+                
                 }) {
                 content
             }
@@ -45,6 +42,7 @@ extension TestPackage {
                     withAnimation {
                         proxy.scrollTo(id, anchor: .center)
                         isVisible = 0
+                        toggle = true
                         
                     }
                 } label: {
