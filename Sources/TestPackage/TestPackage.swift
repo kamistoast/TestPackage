@@ -28,7 +28,7 @@ extension TestPackage {
                 offsetChanged: {
                     //gets the y postion (vertical)
                     currentPosition = $0.y
-                    print(currentPosition)
+                    print("\(currentPosition) und \(savedPosition)")
                 }) {
                 content
             }
