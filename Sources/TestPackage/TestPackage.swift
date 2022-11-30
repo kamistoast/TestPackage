@@ -28,6 +28,11 @@ extension TestPackage {
                 offsetChanged: {
                     //gets the y postion (vertical)
                     currentPosition = $0.y
+                    
+                    if isVisible == 0 {
+                        print("\(currentPosition) unsichtbar")
+                    }
+                    
                     print("\(currentPosition) und \(savedPosition)")
                 }) {
                 content
