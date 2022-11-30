@@ -28,12 +28,13 @@ extension TestPackage {
                     //gets the y postion (vertical)
                     if isVisible == 1 {
                         position = $0.y
+
                     }
                     
-                    if position != $0.y {
+                    if isVisible == 0 && position != $0.y {
                         isVisible = 1
                     }
-                
+
                 }) {
                 content
             }
@@ -42,6 +43,7 @@ extension TestPackage {
                     withAnimation {
                         proxy.scrollTo(id, anchor: .center)
                         isVisible = 0
+                        
                     }
                 } label: {
                     ZStack {
@@ -57,11 +59,6 @@ extension TestPackage {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.trailing)
                 .opacity(isVisible)
-            }
-            .onChange(of: id) { _ in
-                withAnimation {
-                    isVisible = 1
-                }
             }
         }
     }
