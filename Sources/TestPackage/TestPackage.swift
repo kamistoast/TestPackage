@@ -28,18 +28,18 @@ struct ScrollView<Content: View>: View {
     let axes: Axis.Set
     let showsIndicators: Bool
     let offsetChanged: (CGPoint) -> Void
-    let content: Content
+    let contente: Content
 
     init(
         axes: Axis.Set = .vertical,
         showsIndicators: Bool = true,
         offsetChanged: @escaping (CGPoint) -> Void = { _ in },
-        @ViewBuilder content: () -> Content
+        @ViewBuilder contente: () -> Content
     ) {
         self.axes = axes
         self.showsIndicators = showsIndicators
         self.offsetChanged = offsetChanged
-        self.content = content()
+        self.contente = contente()
     }
     
     var body: some View {
@@ -50,7 +50,7 @@ struct ScrollView<Content: View>: View {
                     value: geometry.frame(in: .named("scrollView")).origin
                 )
             }.frame(width: 0, height: 0)
-            content
+            contente
         }
         .coordinateSpace(name: "scrollView")
         .onPreferenceChange(ScrollOffsetPreferenceKey.self, perform: offsetChanged)
@@ -64,7 +64,7 @@ extension TestPackage {
         
         ScrollViewReader { proxy in
             ScrollView(
-                axes: [.horizontal, .vertical],
+                axes: .vertical,
                 showsIndicators: false,
                 offsetChanged: { print($0) }
             ) {
