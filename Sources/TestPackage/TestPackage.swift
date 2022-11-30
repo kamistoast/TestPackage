@@ -26,13 +26,12 @@ extension TestPackage {
                 showsIndicators: false,
                 offsetChanged: {
                     //gets the y postion (vertical)
-                    if isVisible == 1 {
-                        position = $0.y
-
-                    }
                     
                     if isVisible == 0 && position != $0.y {
                         isVisible = 1
+                    } else if isVisible == 1 {
+                        position = $0.y
+
                     }
 
                 }) {
