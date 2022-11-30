@@ -23,6 +23,9 @@ extension TestPackage {
             ScrollView {
                 content
             }
+            .onChange(of: id) { newValue in
+                print("hi")
+            }
             .overlay {
                 Button {
                     withAnimation {
